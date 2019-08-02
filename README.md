@@ -14,3 +14,10 @@ The following technologies were used to create this module:
  - MaterialDesignToolkit.Wpf;
  - BarcodeLib (generator barcode);
  - Gma.QrCodeNet.Encoding (generator qrcode).
+ 
+ Need the next packages (with version do not least):
+ - linq2db.1.8.3
+ - linq2db.MySql.1.8.3
+ - linq2db.t4models.1.8.3
+ - MaterialDesignColors.1.1.3
+ - MaterialDesignThemes.2.3.0.823
