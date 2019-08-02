@@ -1,0 +1,89 @@
+﻿<Window x:Class="PrintOrder.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:PrintOrder"
+        mc:Ignorable="d"
+        
+        Title="Формирование наряд-заказа" Height="420" Width="630" MinWidth="600" MinHeight="300" Visibility="Visible"  Foreground="Black">
+    <Grid x:Name="ComboBoxItemRecipient" Margin="0,0,0,7">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="115*"/>
+            <ColumnDefinition Width="190*"/>
+            <ColumnDefinition Width="6*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="206"></RowDefinition>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="295"></RowDefinition>
+            <RowDefinition Height="0*"/>
+        </Grid.RowDefinitions>
+        <!--Template-->
+        <Label Name="lable1" Margin="0,5,0,0" Content="Шаблон:" VerticalAlignment="Top"
+               HorizontalAlignment="Left" Height="25" Width="73" Grid.Row="4" />
+        <TextBox  x:Name="txbSelectedExcelFile" VerticalAlignment="Top"  
+               HorizontalAlignment="Stretch" Margin="78,5,210,0" HorizontalContentAlignment="Left" Height="25" Grid.Row="4" Grid.ColumnSpan="2" />
+        <Button HorizontalAlignment="Right" VerticalAlignment="Top" Width="201" Content="Выбрать шаблон" x:Name="btnSelect" Margin="0,5,4,0" 
+               Click="btnSelect_Click" RenderTransformOrigin="0.507,0.565" Height="25" Grid.Row="4" Grid.Column="1" />
+        <Button HorizontalAlignment="Right" x:Name="btnConvertToForm" Content="Згенерировать документ" Margin="0,35,4,0" VerticalAlignment="Top" 
+                Width="201" Click="btnConvertToForm_Click" Height="25" Grid.Row="4" Grid.Column="1"/>
+        <!--Data recipient-->
+        <Label Content="Получатель услуги" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="167" Height="28"/>
+        <ComboBox x:Name="ComboBoxRecipient" HorizontalAlignment="Right" Margin="182,10,0,0" VerticalAlignment="Top" Width="420" Height="28" AutomationProperties.IsRequiredForForm="True" 
+                  SelectionChanged="ComboBoxRecipient_SelectionChanged" 
+                  Loaded="ComboBoxRecipient_Loaded" Grid.ColumnSpan="2"/>
+        <!--Data payer-->
+        <Label Content="Платильщик услуги" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Width="167" Height="28"/>
+        <ComboBox x:Name="ComboBoxPayer" HorizontalAlignment="Right" Margin="182,40,0,0" VerticalAlignment="Top" Width="420" Height="28" 
+                  SelectionChanged="ComboBoxPayer_SelectionChanged"
+                  Loaded="ComboBoxPayer_Loaded" Grid.ColumnSpan="2"/>
+        <!--Data supplier-->
+        <Label Content="Организаци, предоставляющая услугу" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Width="221" Height="28" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="ComboBoxSupplier" HorizontalAlignment="Right" Margin="5,70,0,0" VerticalAlignment="Top" Width="369" Height="28" 
+                  SelectionChanged="ComboBoxSupplier_SelectionChanged"
+                  Loaded="ComboBoxSupplier_Loaded" Grid.Column="1"/>
+        <!--Data car-->
+        <Label Content="Данные автомобиля" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Width="221" Height="28" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="ComboBoxCar" HorizontalAlignment="Right" Margin="5,100,0,0" VerticalAlignment="Top" Width="369" Height="28" 
+                  SelectionChanged="ComboBoxCar_SelectionChanged"
+                  Loaded="ComboBoxCar_Loaded" Grid.Column="1"/>
+        <!--Order-->
+        <Label Content="Наряд-заказ №" HorizontalAlignment="Left" Margin="10,145,0,0" VerticalAlignment="Top" Width="97" Height="28" RenderTransformOrigin="0.5,0.5"/>
+        <TextBox x:Name="TextBoxOrder" HorizontalAlignment="Left" Height="28" Margin="132,145,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" 
+                 TextChanged="TextBox_TextChanged" materialDesign:HintAssist.Hint="Номер"
+                 Loaded="TextBoxOrder_Loaded" Grid.ColumnSpan="2"/>
+        <Label Content="от" HorizontalAlignment="Left" Margin="119,145,0,0" VerticalAlignment="Top" Width="30" Height="28" RenderTransformOrigin="0.5,0.5" Grid.Column="1"/>
+        <Label Content="года" HorizontalAlignment="Left" Margin="278,145,0,0" VerticalAlignment="Top" Width="42" Height="28" RenderTransformOrigin="0.5,0.5" Grid.Column="1"/>
+        <!--Data works-->
+        <Label Content="Работы" HorizontalAlignment="Left" Margin="10,175,0,0" VerticalAlignment="Top" Width="167" Height="28" RenderTransformOrigin="0.5,0.5"/>
+        <ComboBox x:Name="ComboBoxWorks" HorizontalAlignment="Right" Margin="0,175,0,0" VerticalAlignment="Top" Width="376" 
+                  Height="28" 
+                  SelectionChanged="ComboBoxWorks_SelectionChanged"
+                  Loaded="ComboBoxWorks_Loaded" Grid.Column="1"/>
+
+        <!--Data goods -->
+        <Label Content="Товары" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="167" Height="28" RenderTransformOrigin="0.5,0.5" Grid.Row="2"/>
+        <ComboBox x:Name="ComboBoxGoods" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Top" Width="376" 
+                  Height="28" 
+                  SelectionChanged="ComboBoxGoods_SelectionChanged"
+                  Loaded="ComboBoxGoods_Loaded" Grid.Row="2" Grid.Column="1"/>
+
+        <DatePicker x:Name="Date_Picker" Margin="159,145,0,36" materialDesign:HintAssist.Hint="Дата"
+                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}" HorizontalAlignment="Left" Width="100" Grid.Column="1"/>
+
+
+        <CheckBox x:Name="CheckBoxWorks" Content="CheckBox" HorizontalAlignment="Left" Margin="207,185,0,0" VerticalAlignment="Top" Width="20"
+                  Height="18" Checked="CheckBoxWorks_Checked" />
+        <CheckBox x:Name="CheckBoxGoods" Content="CheckBox" HorizontalAlignment="Left" Margin="207,10,0,0" VerticalAlignment="Top" Width="20" 
+                  RenderTransformOrigin="0.334,3.793" Checked="CheckBoxGoods_Checked" Height="18" Grid.Row="2"/>
+
+
+
+
+
+    </Grid>
+</Window>
