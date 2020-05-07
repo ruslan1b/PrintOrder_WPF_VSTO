@@ -9,7 +9,7 @@ Steps of work:
 
 The following technologies were used to create this module:
  - WPF (XAML);
- - VSTO Excell (using Microsoft.Office.Interop.Excel);
+ - VSTO Excel (using Microsoft.Office.Interop.Excel);
  - MySQL;
  - MaterialDesignToolkit.Wpf;
  - BarcodeLib (generator barcode);
